@@ -3,30 +3,40 @@ package com.ventas.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ventas.model.Client;
 import com.ventas.repository.ClientRepository;
 
-import ch.qos.logback.core.net.server.Client;
 
 @Service
-public class ClientService {
+public class ClientService implements IClientService{
 
+	@Autowired
 	private ClientRepository clientRepo;
-	
+
+	@Override
 	public Client create(Client c) {
 		return clientRepo.save(c);
 	}
-	
-	public List<Client> getClients(){
-		return clientRepo.findAll();
+
+	@Override
+	public List<Client> getAll() {
+		List<Client> clients = clientRepo.findAll();
+		
+		return clients;
 	}
-	
-	public void delete (Client c) {
+
+	@Override
+	public void delete(Client c) {
 		clientRepo.delete(c);
 	}
-	
-	public Optional<Client> getById(Long id){
+
+	@Override
+	public Optional<Client> getById(Long id) {
 		return clientRepo.findById(id);
 	}
+	
+	
 }

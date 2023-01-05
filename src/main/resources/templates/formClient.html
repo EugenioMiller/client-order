@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>Agregar cliente</title>
@@ -9,17 +9,17 @@
 <body>
 	
 	<div class="container">  
-	  <form id="contact" action="/client" method="post">
+	  <form id="contact" action="/client" method="post" th:object="${client}">
 	    <h3>Agregar un nuevo cliente</h3>
 
 	    <fieldset>
-	      <input placeholder="Nombre" type="text" tabindex="1" required autofocus>
+	      <input placeholder="Nombre" type="text" tabindex="1" required autofocus name="name">
 	    </fieldset>
 	    <fieldset>
-	      <input placeholder="Apellido" type="text" tabindex="2" required>
+	      <input placeholder="Apellido" type="text" tabindex="2" required name="surname">
 	    </fieldset>
 	    <fieldset>
-	      <input placeholder="  Número de teléfono" type="number" tabindex="3" required>
+	      <input placeholder="  Número de teléfono" type="number" tabindex="3" required name="phoneNum">
 	    </fieldset>
 
 	    <fieldset>
