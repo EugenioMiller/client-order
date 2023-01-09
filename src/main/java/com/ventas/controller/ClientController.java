@@ -3,25 +3,24 @@ package com.ventas.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.ventas.model.Client;
 import com.ventas.service.IClientService;
 
 
-@RestController
+@Controller
 @RequestMapping("/client")
 public class ClientController {
 
 	@Autowired
 	private IClientService clientSer;
-	
+
 	@PostMapping
-	public String create(@RequestBody Client client) {
+	public String create(@ModelAttribute Client client) {
 		clientSer.create(client);
 		return client == null ? "error_page" : "redirect:/";
 	} 

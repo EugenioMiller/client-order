@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
@@ -12,7 +12,7 @@
 	<div class="conteiner">
 		<section class="blue">
 	  		<div class="header">
-	   			 <a href="html/formClient.html"><span>Agregar Cliente</span></a>
+	   			 <a href="/newClient"><span>Agregar Cliente</span></a>
 	  		</div>
 	  		<div>
 	    		<p>Abrir formulario para crear un nuevo cliente</p>
@@ -21,7 +21,7 @@
 		
 		<section class="gray">
 		  <div class ="header">
-		   <a href="html/formFood.html"><span>Crear nueva comida</span></a>
+		   <a href="/newFood">Crear nueva comida</a>
 		  </div>
 		  <div>
 		    <p>Abrir formulario para crear nueva comida</p>
@@ -30,7 +30,7 @@
 		
 		<section class="red">
 		  <div class ="header">
-		    <a href="html/formOrder.html"><span>Crear pedido</span></a>
+		    <a href="/newOrder"><span>Crear pedido</span></a>
 		  </div>
 		  <div>
 		    <p>Abir formulario para agregar un pedido a un cliente</p>

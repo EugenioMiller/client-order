@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>Agregar comida</title>
@@ -9,14 +9,14 @@
 <body>
 	
 	<div class="container">  
-	  <form id="contact" action="" method="post">
+	  <form id="contact" action="/createFood" method="post" th:object="${food}">
 	    <h3>Agregar una nueva comida</h3>
 
 	    <fieldset>
-	      <input placeholder="Nombre" type="text" tabindex="1" required autofocus>
+	      <input placeholder="Nombre" type="text" tabindex="1" name="name" required autofocus>
 	    </fieldset>
 	    <fieldset>
-	      <input placeholder="  Precio" type="number" tabindex="3" required>
+	      <input placeholder="  Precio" type="number" tabindex="3" name="price" required>
 	    </fieldset>
 
 	    <fieldset>
