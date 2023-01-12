@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
@@ -8,6 +8,23 @@
 
 <body>
 	<h1>Nuevo pedido</h1>
+	
+	<form action="/createOrder" method="post" th:object="${order}">
+	
+		<label> Seleccione un cliente </label>
+		<select th:field="*{client}">
+			<th:block th:each="client : ${clients}">
+				<option  th:text="${client.name}" th:value="${client.id}"></option>
+			</th:block>
+		</select>
+		
+		<label> Seleccione una comida </label>
+		<select >
+			<option th:each="food : ${foods}" th:text="${food.name}" th:value="${food.id}" ></option>
+		</select>
+		
+		<button name="submit" type="submit">Generar orden</button>
+	</form>
 
 	<a href="../index.html"><button>Volver</button></a>
 

@@ -10,14 +10,14 @@ public class Client {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id_client;
+	private Long id;
 	private String name;
 	private String surname;
 	private Long phoneNum;
 	
 	public Client(Long id, String name, String surname, Long phoneNum) {
 		super();
-		this.id_client = id;
+		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.phoneNum = phoneNum;
@@ -35,11 +35,11 @@ public class Client {
 	}
 
 	public Long getId() {
-		return id_client;
+		return id;
 	}
 
 	public void setId(Long id) {
-		this.id_client = id;
+		this.id = id;
 	}
 
 	public String getName() {
@@ -64,6 +64,11 @@ public class Client {
 
 	public void setPhoneNum(Long phoneNum) {
 		this.phoneNum = phoneNum;
+	}
+
+	@Override
+	public String toString() {
+		return "Client [id_client=" + id + ", name=" + name + "]";
 	}
 	
 	

@@ -2,6 +2,7 @@ package com.ventas.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +17,7 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private Long id;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="id_client")
 	private Client client;
 	@ManyToMany
@@ -33,6 +34,11 @@ public class Order {
 		super();
 		this.client = client;
 		this.foods = foods;
+	}
+	
+	public Order(Client client) {
+		super();
+		this.client = client;
 	}
 
 	public Order() {
@@ -62,6 +68,12 @@ public class Order {
 	public void setFoods(List<Food> foods) {
 		this.foods = foods;
 	}
+
+	@Override
+	public String toString() {
+		return "Order [client=" + client + "]";
+	}
+	
 	
 	
 }

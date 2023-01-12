@@ -5,24 +5,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.ventas.model.Food;
-import com.ventas.service.IFoodService;
-
+import com.ventas.model.Order;
+import com.ventas.service.IOrderService;
 
 @Controller
-public class FoodController {
+public class OrderController {
 
 	@Autowired
-	private IFoodService foodServ;
+	private IOrderService orderServ;
 	
-	@PostMapping("/createFood")
-	public String createFood(@ModelAttribute Food f) {
+	@PostMapping("/createOrder")
+	public String generateOrder(@ModelAttribute Order o) {
 		try {
-			foodServ.create(f);
+			orderServ.create(o);
 			return "redirect:/";
 		} catch (Exception e) {
 			return "error_page";
 		}
-		
 	}
+	
 }
