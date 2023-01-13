@@ -11,21 +11,59 @@
 	
 	<form action="/createOrder" method="post" th:object="${order}">
 	
-		<label> Seleccione un cliente </label>
-		<select th:field="*{client}">
-			<th:block th:each="client : ${clients}">
-				<option  th:text="${client.name}" th:value="${client.id}"></option>
-			</th:block>
-		</select>
+		<!--Condicional Switch-->
+		<div th:switch="${clients.isEmpty} == true">
+			
+			<!--En caso de ser true-->
+			<div th:case="${true}">
+				<p>No existe ningún cliente</p>
+				<br>
+			    <a href="/newClient"> Agregar cliente </a>
+			</div>
+			
+			<!--En caso de ser false-->
+			<div th:case="${false}">
+			
+				<div th:switch="${foods.isEmpty} == true">
+					
+					<!--En caso de ser true-->
+					<div th:case="${true}">
+						<p>No existe ninguna comida</p>
+						<br>
+					    <a href="/newFood"> Agregar comida </a>
+					</div>
+					
+					<!--En caso de ser falso-->
+					<div th:case="${false}">
+						<label> Seleccione un cliente </label>
+						<select th:field="*{client}">
+							<th:block th:each="client : ${clients}">
+								<option  th:text="${client.name}" th:value="${client.id}"></option>
+							</th:block>
+						</select>
+						
+						<label> Seleccione una comida </label>
+						<select >
+							<option th:each="food : ${foods}" th:text="${food.name}" th:value="${food.id}" ></option>
+						</select>
+						
+						<button name="submit" type="submit">Generar orden</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
 		
-		<label> Seleccione una comida </label>
-		<select >
-			<option th:each="food : ${foods}" th:text="${food.name}" th:value="${food.id}" ></option>
-		</select>
+		</div>
+				
 		
-		<button name="submit" type="submit">Generar orden</button>
+		
+		
+		
+		
 	</form>
-
+	
+	<br>
 	<a href="../index.html"><button>Volver</button></a>
 
 </body>
